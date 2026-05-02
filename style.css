@@ -395,6 +395,34 @@ body {
   font-style: italic;
 }
 
+.about-card {
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  color: var(--text-primary);
+}
+
+.about-card__title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 0.35rem;
+}
+
+.about-card__text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.about-card__meta {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--text-tertiary);
+  font-size: 0.82rem;
+}
+
 /* Select wrapper (for custom chevron) */
 .select-wrapper {
   position: relative;
