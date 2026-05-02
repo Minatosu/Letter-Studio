@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Letter Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Cormorant Garamond (paper serif) + DM Sans (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== TOP NAVIGATION BAR ===== -->
+  <header class="navbar">
+    <div class="navbar__brand">
+      <!-- Quill pen icon (inline SVG — no external libs) -->
+      <svg class="navbar__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.71 4.04C21.1 3.65 21.1 3 20.71 2.62L21.38 3.29C21 2.9 20.35 2.9 19.96 3.29L3 20.25V21H3.75L20.71 4.04Z" fill="currentColor"/>
+        <path d="M17.06 3L3 17.06V21H6.94L21 6.94L17.06 3ZM6.1 19H5V17.9L13.06 9.85L14.15 10.94L6.1 19ZM15.56 9.53L14.47 8.44L17.06 5.85L18.15 6.94L15.56 9.53Z" fill="currentColor"/>
+      </svg>
+      <span class="navbar__title">Letter<em>Studio</em></span>
+    </div>
+
+    <nav class="navbar__actions">
+      <span class="navbar__badge">AI Powered</span>
+      <!-- Theme Toggle Button -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle Theme">
+        <!-- Moon icon (dark mode) -->
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <!-- Sun icon (light mode) -->
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN SPLIT-SCREEN LAYOUT ===== -->
+  <main class="studio">
+
+    <!-- ======= LEFT: CONTROL PANEL ======= -->
+    <aside class="control-panel" role="form" aria-label="Letter configuration">
+
+      <div class="panel-section">
+        <h2 class="panel-heading">Compose</h2>
+        <p class="panel-subheading">Configure your letter below and let AI craft the words.</p>
+      </div>
+
+      <div class="panel-section">
+        <!-- Sender Name -->
+        <div class="field-group">
+          <label class="field-label" for="senderName">
+            <span class="field-label__number">01</span>
+            Sender Name
+          </label>
+          <input
+            type="text"
+            id="senderName"
+            class="field-input"
+            placeholder="Your full name"
+            autocomplete="name"
+          />
+        </div>
+
+        <!-- Recipient Name -->
+        <div class="field-group">
+          <label class="field-label" for="recipientName">
+            <span class="field-label__number">02</span>
+            Recipient Name
+          </label>
+          <input
+            type="text"
+            id="recipientName"
+            class="field-input"
+            placeholder="Recipient's full name"
+          />
+        </div>
+
+        <!-- Recipient Title/Designation -->
+        <div class="field-group">
+          <label class="field-label" for="recipientTitle">
+            <span class="field-label__number">03</span>
+            Recipient Title / Designation
+          </label>
+          <input
+            type="text"
+            id="recipientTitle"
+            class="field-input"
+            placeholder="e.g., Principal, Manager, Professor"
+          />
+        </div>
+
+        <!-- Recipient Address -->
+        <div class="field-group">
+          <label class="field-label" for="recipientAddress">
+            <span class="field-label__number">04</span>
+            Recipient Address
+          </label>
+          <textarea
+            id="recipientAddress"
+            class="field-input field-input--textarea"
+            placeholder="School/Company name, Street, City, Postal Code"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- School/Organization Name -->
+        <div class="field-group">
+          <label class="field-label" for="schoolName">
+            <span class="field-label__number">05</span>
+            School / Organization Name
+          </label>
+          <input
+            type="text"
+            id="schoolName"
+            class="field-input"
+            placeholder="Name of your institution"
+          />
+        </div>
+
+        <!-- Student/Employee ID -->
+        <div class="field-group">
+          <label class="field-label" for="studentId">
+            <span class="field-label__number">06</span>
+            Student / Employee ID
+          </label>
+          <input
+            type="text"
+            id="studentId"
+            class="field-input"
+            placeholder="Your ID number (optional)"
+          />
+        </div>
+
+        <!-- Tone Dropdown -->
+        <div class="field-group">
+          <label class="field-label" for="tone">
+            <span class="field-label__number">07</span>
+            Tone &amp; Style
+          </label>
+          <div class="select-wrapper">
+            <select id="tone" class="field-input field-input--select">
+              <option value="formal">Formal</option>
+              <option value="casual">Casual</option>
+              <option value="warm">Warm &amp; Affectionate</option>
+              <option value="confident">Confident</option>
+              <option value="sincere">Sincere</option>
+            </select>
+            <!-- Custom chevron -->
+            <svg class="select-chevron" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Letter Date -->
+        <div class="field-group">
+          <label class="field-label" for="letterDate">
+            <span class="field-label__number">08</span>
+            Letter Date
+          </label>
+          <input
+            type="date"
+            id="letterDate"
+            class="field-input"
+          />
+          <small class="field-hint">Leave blank to use today's date</small>
+        </div>
+
+        <!-- Context / Message -->
+        <div class="field-group">
+          <label class="field-label" for="context">
+            <span class="field-label__number">09</span>
+            Context &amp; Key Points
+          </label>
+          <textarea
+            id="context"
+            class="field-input field-input--textarea"
+            placeholder="Describe the purpose of the letter, key points to cover, any specific details or requests…"
+            rows="5"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <div class="panel-section panel-section--action">
+        <button class="btn-generate" id="generateBtn" aria-live="polite">
+          <svg class="btn-generate__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-generate__text">Generate Letter</span>
+        </button>
+
+        <!-- Status / Error message area -->
+        <p class="status-message" id="statusMessage" aria-live="assertive" role="alert"></p>
+      </div>
+
+    </aside><!-- /control-panel -->
+
+    <!-- ======= RIGHT: WORKSPACE ======= -->
+    <section class="workspace" aria-label="Letter preview workspace">
+
+      <div class="workspace__toolbar">
+        <span class="workspace__label">Preview</span>
+        <!-- Copy button -->
+        <button class="workspace__btn" id="copyBtn" title="Copy letter to clipboard" aria-label="Copy letter text">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <!-- The Virtual Paper (A4 proportions) -->
+      <div class="paper-scroll-area">
+        <article class="virtual-paper" id="virtualPaper" aria-label="Generated letter document">
+
+          <!-- Paper Header: Sender info -->
+          <header class="paper-header">
+            <div class="paper-sender" id="paperSender">Your Name</div>
+            <div class="paper-sender-id" id="paperSenderId"></div>
+            <div class="paper-sender-org" id="paperSenderOrg"></div>
+            <div class="paper-date" id="paperDate"></div>
+          </header>
+
+          <!-- Recipient address block -->
+          <div class="paper-recipient-block">
+            <div class="paper-recipient-title" id="paperRecipientTitle"></div>
+            <div class="paper-recipient" id="paperRecipient">Recipient Name</div>
+            <div class="paper-recipient-address" id="paperRecipientAddress"></div>
+          </div>
+
+          <!-- Subject line (for formal letters) -->
+          <div class="paper-subject-line" id="paperSubjectLine"></div>
+
+          <!-- Salutation -->
+          <div class="paper-salutation" id="paperSalutation">Dear Recipient,</div>
+
+          <!-- Body: placeholder until generated -->
+          <div class="paper-body" id="paperBody">
+            <p class="paper-placeholder">Your AI-crafted letter will appear here. Fill in the details on the left and click <strong>Generate Letter</strong> to begin.</p>
+          </div>
+
+          <!-- Closing -->
+          <footer class="paper-footer">
+            <div class="paper-closing" id="paperClosing">Sincerely,</div>
+            <div class="paper-signature" id="paperSignature">Your Name</div>
+          </footer>
+
+        </article>
+      </div>
+
+      <!-- Loading overlay (sits inside workspace, covers paper) -->
+      <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <p class="spinner-label">Composing your letter…</p>
+        </div>
+      </div>
+
+    </section><!-- /workspace -->
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
