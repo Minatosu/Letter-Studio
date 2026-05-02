@@ -1,3 +1,3 @@
 const CONFIG = {
-  API_KEY: 'YOUR_GEMINI_API_KEY_HERE'
+  API_KEY: 'AIzaSyBlFwTabVlItFxfAgL8Vh6F58vRuxtyz_A'
 };
