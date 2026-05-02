@@ -18,7 +18,7 @@
    ⚠  Replace 'YOUR_KEY_HERE' with your Gemini API key.
    Do NOT expose this key in a public repository.
    ───────────────────────────────────────────────────── */
-const GEMINI_API_KEY = 'AIzaSyBN_XpMtkSvWwXxRlQ2DcFzfE9qvVsaLw0';
+const GEMINI_API_KEY = 'AIzaSyCCPED23kBoLxW-yAqpY2ZBCr80k89a928';
 
 /* Gemini model endpoint — using gemini-2.5-flash-lite */
 const GEMINI_API_URL =
